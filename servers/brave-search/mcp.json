@@ -1,0 +1,21 @@
+{
+  "id": "brave-search",
+  "name": "Brave Web Search",
+  "version": "1.0.0",
+  "category": "search",
+  "description": "Real-time web search for fresh library documentation, API references, and syntax.",
+  "icon": "globe-outline",
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-brave-search"
+    ],
+    "env": {
+      "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+    },
+    "transport": "stdio",
+    "enabled": true,
+    "requiresApproval": false
+  }
+}
