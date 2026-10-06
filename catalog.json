@@ -1,0 +1,166 @@
+{
+  "$schema": "https://pocket-ide.dev/schemas/mcp-catalog-v1.json",
+  "version": "1.0.0",
+  "servers": [
+    {
+      "id": "sqlite",
+      "name": "SQLite Explorer",
+      "version": "1.0.0",
+      "category": "database",
+      "description": "Direct read and query access to project SQLite databases inside Termux.",
+      "icon": "server-outline",
+      "author": "Pocket IDE Core",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sqlite",
+          "--db-path",
+          "./data/app.db"
+        ],
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": false,
+        "alwaysAllowedTools": [
+          "read_query",
+          "list_tables",
+          "describe_table"
+        ]
+      },
+      "requiredEnvVars": [
+        {
+          "key": "DATABASE_PATH",
+          "label": "Database File Path",
+          "placeholder": "./data/app.db",
+          "defaultValue": "./data/app.db"
+        }
+      ]
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Web Search",
+      "version": "1.0.0",
+      "category": "search",
+      "description": "Real-time web search for fresh library documentation, API references, and syntax.",
+      "icon": "globe-outline",
+      "author": "Brave Software",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-brave-search"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+        },
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": false
+      },
+      "requiredEnvVars": [
+        {
+          "key": "BRAVE_API_KEY",
+          "label": "Brave Search API Key",
+          "placeholder": "BSA...",
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "name": "GitHub Integration",
+      "version": "1.0.0",
+      "category": "git",
+      "description": "Inspect repositories, issues, pull requests, and commit logs directly from chat.",
+      "icon": "git-branch-outline",
+      "author": "Model Context Protocol",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        },
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": true
+      },
+      "requiredEnvVars": [
+        {
+          "key": "GITHUB_TOKEN",
+          "label": "GitHub Personal Access Token",
+          "placeholder": "ghp_...",
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "id": "postgres",
+      "name": "PostgreSQL Client",
+      "version": "1.0.0",
+      "category": "database",
+      "description": "Read-only schema inspection and querying for remote PostgreSQL databases.",
+      "icon": "server-outline",
+      "author": "Model Context Protocol",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-postgres",
+          "${POSTGRES_URL}"
+        ],
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": true
+      },
+      "requiredEnvVars": [
+        {
+          "key": "POSTGRES_URL",
+          "label": "Database Connection URL",
+          "placeholder": "postgresql://user:pass@host:5432/db",
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch Web Extractor",
+      "version": "1.0.0",
+      "category": "search",
+      "description": "Converts web pages and documentation articles into clean markdown for the agent.",
+      "icon": "globe-outline",
+      "author": "Model Context Protocol",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-fetch"
+        ],
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": false
+      }
+    },
+    {
+      "id": "memory",
+      "name": "Memory Graph",
+      "version": "1.0.0",
+      "category": "reasoning",
+      "description": "Maintains persistent knowledge graph nodes and cross-session entity memory.",
+      "icon": "hardware-chip-outline",
+      "author": "Model Context Protocol",
+      "config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "transport": "stdio",
+        "enabled": true,
+        "requiresApproval": false
+      }
+    }
+  ]
+}
