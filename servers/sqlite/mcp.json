@@ -1,0 +1,20 @@
+{
+  "id": "sqlite",
+  "name": "SQLite Explorer",
+  "version": "1.0.0",
+  "category": "database",
+  "description": "Direct read and query access to project SQLite databases inside Termux.",
+  "icon": "server-outline",
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-sqlite",
+      "--db-path",
+      "./data/app.db"
+    ],
+    "transport": "stdio",
+    "enabled": true,
+    "requiresApproval": false
+  }
+}
